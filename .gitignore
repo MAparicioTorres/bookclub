@@ -1,0 +1,73 @@
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDEs
+# =========================
+.idea/
+.vscode/
+*.iml
+
+# =========================
+# Git
+# =========================
+.git/
+
+# =========================
+# Backend (Spring Boot / Maven)
+# =========================
+backend/target/
+backend/*.class
+backend/*.jar
+backend/*.war
+
+# Maven wrapper 
+backend/.mvn/
+backend/mvnw*
+!backend/mvnw
+!backend/mvnw.cmd
+
+# Spring Boot logs / temp
+backend/*.log
+
+# =========================
+# Frontend (React)
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Vite cache
+frontend/.vite/
+
+# CRA cache 
+frontend/.cache/
+
+# =========================
+# Testing
+# =========================
+coverage/
+
+# =========================
+# Misc
+# =========================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
