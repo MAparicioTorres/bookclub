@@ -24,8 +24,13 @@ public class Book {
     @Setter
     private String title;
 
-    @OneToMany(mappedBy = "book")
-    private List<BookAuthor> authors;
+    @ManyToMany()
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private List<Author> authors;
 
     @Transient
     @Setter

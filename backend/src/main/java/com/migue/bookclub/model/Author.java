@@ -19,6 +19,6 @@ public class Author {
 
     private String name;
 
-    @OneToMany(mappedBy = "author")
-    private List<BookAuthor> books;
+    @OneToMany(mappedBy = "authors")
+    private List<Book> books;
 }
