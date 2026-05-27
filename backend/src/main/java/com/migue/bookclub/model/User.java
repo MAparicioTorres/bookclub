@@ -11,7 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "user")
+@Table(name = "member") // 'user' conflicts with PostgreSQL as it's a reserved word
 @Getter
 @NoArgsConstructor
 @ToString
@@ -37,8 +37,10 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public User(String username, Role role) {
+    public User(String username, String password, String email, Role role) {
         this.username = username;
+        this.password = password;
+        this.email = email;
         this.role = role;
     }
 }
