@@ -12,5 +12,6 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
+        default_schema: bookclub
         format_sql: true
     show-sql: true
