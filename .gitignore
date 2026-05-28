@@ -49,6 +49,9 @@ backend/*.log
 # Seeder
 backend/src/main/java/com/migue/bookclub/config/DataSeeder.java
 
+# CSV
+backend/club_de_lectura.csv
+
 # =========================
 # Frontend (React)
 # =========================
