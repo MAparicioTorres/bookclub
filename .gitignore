@@ -46,6 +46,9 @@ backend/mvnw*
 # Spring Boot logs / temp
 backend/*.log
 
+# Seeder
+backend/src/main/java/com/migue/bookclub/config/DataSeeder.java
+
 # =========================
 # Frontend (React)
 # =========================
