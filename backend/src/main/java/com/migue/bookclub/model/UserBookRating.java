@@ -25,7 +25,7 @@ public class UserBookRating {
     @JoinColumn(name = "book_id")
     private Book book;
 
-    @Column(precision = 3, scale = 2)
+    @Column(precision = 4, scale = 2)
     private BigDecimal rating;
 
     public UserBookRating(User user, Book book, BigDecimal rating) {
