@@ -16,7 +16,7 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping("/{id}")
-    public BookDetailResponse getBookDetails(@PathVariable long id) {
-        return bookService.getBookDetails(id);
+    public BookDetailResponse getBook(@PathVariable long id) {
+        return bookService.getBook(id);
     }
 }
