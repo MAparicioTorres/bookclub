@@ -4,6 +4,7 @@ import com.migue.bookclub.dto.LoginRequest;
 import com.migue.bookclub.dto.LoginResponse;
 import com.migue.bookclub.dto.RegisterRequest;
 import com.migue.bookclub.enums.Role;
+import com.migue.bookclub.exception.DuplicateResourceException;
 import com.migue.bookclub.exception.InvalidCredentialsException;
 import com.migue.bookclub.model.User;
 import com.migue.bookclub.repository.UserRepository;
@@ -24,8 +25,11 @@ public class AuthService {
 
     @Transactional
     public LoginResponse register(RegisterRequest request) {
-        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
-            throw new IllegalArgumentException("Username already taken");
+
+        String username = request.getUsername();
+
+        if (!userRepository.existsByUsernameIgnoreCase(username)) {
+            throw new DuplicateResourceException("Username: " + username + " is already taken");
         }
 
         // hash the password
