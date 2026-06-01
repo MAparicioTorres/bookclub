@@ -17,15 +17,15 @@ public class UserBookRating {
     @Setter(AccessLevel.NONE)
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
-    @Column(precision = 4, scale = 2)
+    @Column(precision = 4, scale = 2, nullable = false)
     private BigDecimal rating;
 
     public UserBookRating(User user, Book book, BigDecimal rating) {
