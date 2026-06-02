@@ -27,9 +27,16 @@ public class AuthService {
     public LoginResponse register(RegisterRequest request) {
 
         String username = request.getUsername();
+        String email = request.getEmail();
 
-        if (!userRepository.existsByUsernameIgnoreCase(username)) {
+        // check if user already exists
+        if (userRepository.existsByUsernameIgnoreCase(username)) {
             throw new DuplicateResourceException("Username: " + username + " is already taken");
+        }
+
+        //check if email exists
+        if (userRepository.existsByEmail(email)) {
+            throw new DuplicateResourceException("Email is already in use");
         }
 
         // hash the password
