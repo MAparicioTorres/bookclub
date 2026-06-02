@@ -37,6 +37,7 @@ public class BookService {
         List<UserBookRating> ratings = ratingRepository.findByBookId(id);
         List<RatingResponse> ratingResponses = ratings.stream().map(rating -> new RatingResponse(
                 rating.getUser().getUsername(),
+                book.getTitle(),
                 rating.getRating()
         )).toList();
 
