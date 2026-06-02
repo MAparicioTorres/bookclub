@@ -9,5 +9,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class RatingResponse {
     private String username;
+    private String title;
     private BigDecimal rating;
 }
