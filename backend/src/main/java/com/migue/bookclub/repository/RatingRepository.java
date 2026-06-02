@@ -1,6 +1,7 @@
 package com.migue.bookclub.repository;
 
 import com.migue.bookclub.model.UserBookRating;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,4 +16,5 @@ public interface RatingRepository extends JpaRepository<UserBookRating, Long> {
     @EntityGraph(attributePaths = "user")
     List<UserBookRating> findByBookId(@Param("bookId") Long bookId);
 
+    boolean existsByUserIdAndBookId(long userId, long bookId);
 }
