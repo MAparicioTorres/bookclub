@@ -15,10 +15,6 @@ spring:
     secret: ${JWT_SECRET_KEY}
     expiration-ms: 86400000
 
-app:
-  cors:
-    allowed-origins: http://localhost:5173
-
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -27,3 +23,7 @@ app:
         default_schema: bookclub
         format_sql: true
     show-sql: true
+
+app:
+  cors:
+    allowed-origins: http://localhost:5173
