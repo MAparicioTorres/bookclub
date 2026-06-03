@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RatingRepository extends JpaRepository<UserBookRating, Long> {
@@ -17,4 +18,6 @@ public interface RatingRepository extends JpaRepository<UserBookRating, Long> {
     List<UserBookRating> findByBookId(@Param("bookId") Long bookId);
 
     boolean existsByUserIdAndBookId(long userId, long bookId);
+
+    Optional<UserBookRating> findByUserIdAndBookId(long userId, long bookId);
 }
