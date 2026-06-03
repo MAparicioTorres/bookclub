@@ -1,6 +1,5 @@
 package com.migue.bookclub.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
@@ -12,7 +11,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class RatingRequest{
+public class CreateRatingRequest {
     @NotNull(message = "Book ID is required")
     private long bookId;
 
