@@ -20,7 +20,6 @@ public class RatingService {
 
     private final RatingRepository ratingRepository;
     private final BookRepository bookRepository;
-    private final UserRepository userRepository;
 
     public RatingResponse rateBook(User user, CreateRatingRequest request) {
         // check if book exists
