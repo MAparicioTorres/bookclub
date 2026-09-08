@@ -22,36 +22,27 @@ public class RatingService {
     private final BookRepository bookRepository;
 
     public RatingResponse rateBook(User user, CreateRatingRequest request) {
-        // check if book exists
         Book book = bookRepository.findById(request.getBookId()).orElseThrow(() -> new ResourceNotFoundException("Book not found"));
 
-        // check if rating already exists
         if (ratingRepository.existsByUserIdAndBookId(user.getId(), request.getBookId())) {
             throw new DuplicateResourceException("You have already rated " + "'" + book.getTitle() + "'");
         }
 
-        // create and save rating
         UserBookRating rating = new UserBookRating(user, book, request.getRating());
         ratingRepository.save(rating);
 
-        // return RatingResponse
         return new RatingResponse(user.getUsername(), book.getTitle(), request.getRating());
     }
 
     public RatingResponse updateRating(User user, long bookId, UpdateRatingRequest request) {
-        // check if book exists
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book not found"));
 
-        // check if rating already exists and retrieve it
         UserBookRating rating = ratingRepository.findByUserIdAndBookId(user.getId(), book.getId()).orElseThrow(() -> new ResourceNotFoundException("You haven't yet rated " + "'" + book.getTitle() + "'"));
 
-        // update rating
         rating.setRating(request.getRating());
 
-        // persist rating
         ratingRepository.save(rating);
 
-        // return RatingResponse
         return new RatingResponse(
                 user.getUsername(),
                 book.getTitle(),
