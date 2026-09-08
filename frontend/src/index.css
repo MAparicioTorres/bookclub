@@ -1,14 +1,57 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "ChunkyBolde";
+  src: url("./assets/fonts/ChunkyBoldeRegular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "EarlyQuake";
+  src: url("./assets/fonts/EarlyQuake.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "LibreBaskerville";
+  src: url("./assets/fonts/LibreBaskerville-Regular.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LibreBaskerville";
+  src: url("./assets/fonts/LibreBaskerville-Bold.ttf") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LibreBaskerville";
+  src: url("./assets/fonts/LibreBaskerville-Italic.ttf") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
 @theme {
   --color-bg: #1f2937;
   --color-primary: #4f45e5;
   --color-primary-dark: #2a2abe;
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --font-logo: "EarlyQuake", system-ui, sans-serif;
+  --font-serif: "LibreBaskerville", Georgia, serif;
 }
 
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pumpGlow {
