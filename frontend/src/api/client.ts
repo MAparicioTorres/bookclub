@@ -6,7 +6,7 @@ const apiClient = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-// bind token to every request 
+// bind token to every request
 apiClient.interceptors.request.use((config) => {
   const token = localStorage.getItem("jwt");
 
@@ -22,11 +22,14 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem("jwt");
-      window.location.href = "/login";
+      const requestUrl = error.config?.url ?? "";
+      if (!requestUrl.includes("/auth/login")) {
+        localStorage.removeItem("jwt");
+        window.location.href = "/login";
+      }
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default apiClient;
