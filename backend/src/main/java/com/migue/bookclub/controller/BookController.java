@@ -9,12 +9,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/books")
 @RequiredArgsConstructor
 public class BookController {
 
     private final BookService bookService;
+
+    @GetMapping()
+    public List<BookResponse> getBooks() {
+        return bookService.getBooks();
+    }
 
     @GetMapping("/{id}")
     public BookDetailResponse getBook(@PathVariable long id) {
@@ -23,7 +30,7 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public BookResponse createBook(@RequestBody @Valid CreateBookRequest request){
+    public BookResponse createBook(@RequestBody @Valid CreateBookRequest request) {
         return bookService.createBook(request);
     }
 }
