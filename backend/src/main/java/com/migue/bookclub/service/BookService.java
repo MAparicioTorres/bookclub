@@ -32,6 +32,17 @@ public class BookService {
     private final AuthorRepository authorRepository;
     private final GenreRepository genreRepository;
 
+    public List<BookResponse> getBooks() {
+        return bookRepository.findAll().stream()
+                .map(book -> new BookResponse(
+                        book.getId(),
+                        book.getTitle(),
+                        book.getAuthors().stream().map(Author::getName).toList(),
+                        book.getGenres().stream().map(Genre::getName).toList(),
+                        book.getCoverUrl()
+                )).toList();
+    }
+
     public BookDetailResponse getBook(long id) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book not found"));
         List<UserBookRating> ratings = ratingRepository.findByBookId(id);
