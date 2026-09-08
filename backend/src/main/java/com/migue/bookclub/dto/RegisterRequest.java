@@ -13,7 +13,8 @@ public class RegisterRequest {
     private String username;
 
     @Size(max = 100, message = "Email cannot exceed 100 characters")
-    @Email(message = "Email must be a valid format")
+    @Email(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            message = "Email must have a valid format and contain a domain")
     @NotBlank(message = "Email is required")
     private String email;
 
