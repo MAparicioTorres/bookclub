@@ -34,7 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        // get the token without 'Bearer '
+        // Retrieve token without 'Bearer '
         String token = authHeader.substring(7);
 
         if (!jwtService.isValid(token)) {
@@ -52,17 +52,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         User user = userOpt.get();
 
-        // use Spring's authority wrapper
+        // Employ Spring's authority wrapper
         List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
 
-        // create Spring Security authentication token
+        // Create Spring Security authentication token
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                 user,
                 null,
                 authorities
         );
 
-        // set the authentication for the SecurityContext
+        // Set the authentication for the SecurityContext
         SecurityContextHolder.getContext().setAuthentication(authToken);
         filterChain.doFilter(request, response);
     }
