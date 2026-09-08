@@ -29,20 +29,16 @@ public class AuthService {
         String username = request.getUsername();
         String email = request.getEmail();
 
-        // check if user already exists
         if (userRepository.existsByUsernameIgnoreCase(username)) {
             throw new DuplicateResourceException("Username: " + username + " is already taken");
         }
 
-        //check if email exists
         if (userRepository.existsByEmail(email)) {
             throw new DuplicateResourceException("Email is already in use");
         }
 
-        // hash the password
         String hashedPassword = passwordEncoder.encode(request.getPassword());
 
-        // create the user with request data
         User user = new User(
                 request.getUsername(),
                 hashedPassword,
