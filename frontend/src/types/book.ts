@@ -12,6 +12,8 @@ export interface BookDetailResponse {
   authors: string[];
   genres: string[];
   coverUrl: string;
+  startDate: string | null;
+  finishDate: string | null;
   publishedDate: string;
   avgRating: number | null;
 }
